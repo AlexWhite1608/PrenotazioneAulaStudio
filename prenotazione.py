@@ -10,6 +10,8 @@ import time
 def nuova_prenotazione(fascia_oraria):
     # apre il form di prenotazione
     setup.driver.find_element_by_id("form").click()
+
+    # inizia il ciclo delle prenotazioni
     ciclo_prenotazione(fascia_oraria)
 
 
@@ -44,7 +46,7 @@ def ciclo_prenotazione(fascia_oraria):
         for giorno_prenotabile in giorni_prenotabili:
             giorno_prenotabile.find_element_by_class_name("show-more").click()
 
-            # apre soltanto i giorni che sono prenotabili
+            # apre soltanto i giorni che sono prenotabili ed esegue la prenotazione
             try:
                 WebDriverWait(setup.driver, 0.2).until(
                     EC.presence_of_element_located(
@@ -65,15 +67,15 @@ def ciclo_prenotazione(fascia_oraria):
                 setup.driver.find_element_by_class_name("nav")
                 setup.driver.find_element_by_xpath('//*[@id="menu"]/div/div[1]/ul/li[2]/a').click()
 
-                # riesegue tutto il ciclo andando a creare una nuova prenotazione fino a quando sono esauriti i giorni
+                # riesegue tutto il ciclo andando a creare una nuova prenotazione fino a quando si esauriscono i giorni
                 ciclo_prenotazione(fascia_oraria)
 
             except:
+                # se il giorno non è disponibile
                 print("Giorno non disponibile")
 
         # TODO: se ha finito i giorni prenotabili torna al menù principale per far partire il pomeriggio
         print("Ho finito tutte le mattine disponibili!")
-
 
 
 def info_prenotazione():

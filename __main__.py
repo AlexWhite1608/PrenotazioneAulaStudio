@@ -17,7 +17,7 @@ try:
         EC.presence_of_element_located((By.ID, "titolo-pagina"))
     )
 
-    # esegue prenotazione
+    # esegue prenotazione per la mattina
     prenotazione.nuova_prenotazione("Mattina")
 
 except:
