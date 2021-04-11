@@ -35,6 +35,7 @@ def nuova_prenotazione(fascia_oraria):
         # seleziona i giorni prenotabili dalla lista
         giorni_prenotabili = setup.driver.find_elements_by_css_selector(
             "[title=\"Clicca per visualizzare gli orari.\"]")
+
         for giorno_prenotabile in giorni_prenotabili:
             giorno_prenotabile.find_element_by_class_name("show-more").click()
 
@@ -47,5 +48,12 @@ def nuova_prenotazione(fascia_oraria):
                 setup.driver.find_element_by_css_selector("[title=\"Clicca per prenotare!\"]").click()
                 # TODO: stampa le informazioni della prenotazione
                 setup.driver.find_element_by_id("conferma").click()
+
             except:
                 print("Giorno non disponibile")
+
+        # esegue una nuova prenotazione
+        setup.driver.find_element_by_class_name("hamburger").click()
+        time.sleep(0.5)
+        setup.driver.find_element_by_class_name("nav")
+        setup.driver.find_element_by_xpath('//*[@id="menu"]/div/div[1]/ul/li[2]/a').click()
