@@ -83,5 +83,5 @@ def info_prenotazione():
     setup.driver.find_element_by_class_name("col-xs-12 form-group-bordered")
     setup.driver.find_element_by_class_name("col-sm-6")
     informazioni_prenotazione = setup.driver.find_element_by_xpath('//*[@id="formverifica"]/div[2]/div[1]/h4[4]')
-    print("\n\n" + informazioni_prenotazione.text + "\n" + setup.driver.find_element_by_xpath(
+    print("\n\n" + informazioni_prenotazione.text() + "\n" + setup.driver.find_element_by_xpath(
         '//*[@id="formverifica"]/div[2]/div[1]/h4[3]').text())
