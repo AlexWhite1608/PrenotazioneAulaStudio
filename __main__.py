@@ -35,4 +35,5 @@ except:
     print("Finito pomeriggio")
 
 # finite le prenotazioni, chiude tutto
+print("Tutte le prenotazioni sono state eseguite!")
 setup.driver.quit()

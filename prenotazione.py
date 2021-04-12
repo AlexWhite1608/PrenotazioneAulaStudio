@@ -10,6 +10,7 @@ import time
 def nuova_prenotazione(fascia_oraria):
     # apre il form di prenotazione
     setup.driver.find_element_by_id("form").click()
+    time.sleep(0.2)
 
     # inizia il ciclo delle prenotazioni
     ciclo_prenotazione(fascia_oraria)
