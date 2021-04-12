@@ -61,6 +61,8 @@ def ciclo_prenotazione(fascia_oraria):
 
                 setup.driver.find_element_by_css_selector("[title=\"Clicca per prenotare!\"]").click()
 
+                # TODO: le informazioni della prenotazione devono essere stampate in un file(?)
+                # stampa informazioni prenotazione
                 info_prenotazione()
 
                 # prenotazione eseguita!
