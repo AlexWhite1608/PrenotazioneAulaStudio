@@ -81,8 +81,6 @@ def ciclo_prenotazione(fascia_oraria):
                 # se il giorno non è disponibile
                 print("Giorno non disponibile")
 
-        # TODO: se ha finito i giorni prenotabili torna al menù principale per far partire il pomeriggio
-
         # torna alla pagina principale
         setup.driver.find_element_by_class_name("hamburger").click()
         time.sleep(0.5)
