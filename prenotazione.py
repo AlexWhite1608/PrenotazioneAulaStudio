@@ -39,6 +39,12 @@ def ciclo_prenotazione(fascia_oraria):
                 break
         setup.driver.find_element_by_id("verify").click()
 
+        # apre anche i giorni successivi
+        setup.driver.find_element_by_id("load_next").click()
+        time.sleep(0.5)
+        setup.driver.find_element_by_id("load_next").click()
+        time.sleep(0.5)
+
         # seleziona i giorni prenotabili dalla lista
         giorni_prenotabili = setup.driver.find_elements_by_css_selector(
             "[title=\"Clicca per visualizzare gli orari.\"]")
@@ -55,8 +61,7 @@ def ciclo_prenotazione(fascia_oraria):
 
                 setup.driver.find_element_by_css_selector("[title=\"Clicca per prenotare!\"]").click()
 
-                # TODO: stampa le informazioni della prenotazione
-                # info_prenotazione()
+                info_prenotazione()
 
                 # prenotazione eseguita!
                 setup.driver.find_element_by_id("conferma").click()
@@ -79,9 +84,9 @@ def ciclo_prenotazione(fascia_oraria):
 
 
 def info_prenotazione():
-    setup.driver.find_element_by_id("formverifica")
-    setup.driver.find_element_by_class_name("col-xs-12 form-group-bordered")
-    setup.driver.find_element_by_class_name("col-sm-6")
-    informazioni_prenotazione = setup.driver.find_element_by_xpath('//*[@id="formverifica"]/div[2]/div[1]/h4[4]')
-    print("\n\n" + informazioni_prenotazione.text() + "\n" + setup.driver.find_element_by_xpath(
-        '//*[@id="formverifica"]/div[2]/div[1]/h4[3]').text())
+
+    informazioni = setup.driver.find_elements_by_class_name("col-sm-6")
+
+    for informazione in informazioni:
+        if 'Sportello: ' in informazione.text:
+            print("\n\n" + informazione.text + "\n")
