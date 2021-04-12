@@ -41,9 +41,9 @@ def ciclo_prenotazione(fascia_oraria):
 
         # apre anche i giorni successivi
         setup.driver.find_element_by_id("load_next").click()
-        time.sleep(0.5)
+        time.sleep(0.7)
         setup.driver.find_element_by_id("load_next").click()
-        time.sleep(0.5)
+        time.sleep(0.7)
 
         # seleziona i giorni prenotabili dalla lista
         giorni_prenotabili = setup.driver.find_elements_by_css_selector(
@@ -82,11 +82,15 @@ def ciclo_prenotazione(fascia_oraria):
                 print("Giorno non disponibile")
 
         # TODO: se ha finito i giorni prenotabili torna al menù principale per far partire il pomeriggio
-        print("Ho finito tutte le mattine disponibili!")
+
+        # torna alla pagina principale
+        setup.driver.find_element_by_class_name("hamburger").click()
+        time.sleep(0.5)
+        setup.driver.find_element_by_class_name("nav")
+        setup.driver.find_element_by_xpath('//*[@id="menu"]/div/div[1]/ul/li[1]/a').click()
 
 
 def info_prenotazione():
-
     informazioni = setup.driver.find_elements_by_class_name("col-sm-6")
 
     for informazione in informazioni:

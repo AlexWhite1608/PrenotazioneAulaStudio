@@ -1,3 +1,4 @@
+import time
 import login
 import setup
 import prenotazione
@@ -21,7 +22,18 @@ try:
     prenotazione.nuova_prenotazione("Mattina")
 
 except:
-    #setup.driver.quit()
-    print("ASPETTA")
+    print("Finito Mattina")
+
+try:
+    pagina_principale = WebDriverWait(setup.driver, 5).until(
+        EC.presence_of_element_located((By.ID, "titolo-pagina"))
+    )
+
+    # esegue prenotazione per la mattina
+    prenotazione.nuova_prenotazione("Pomeriggio")
+
+except:
+    print("Finito pomeriggio")
+    setup.driver.quit()
 
 #driver.quit()
