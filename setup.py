@@ -1,5 +1,4 @@
 from selenium import webdriver
-from tkinter import *
 
 # ignora gli errori ssl
 options = webdriver.ChromeOptions()
