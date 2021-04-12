@@ -4,7 +4,6 @@ import prenotazione
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from tkinter import *
 
 # apre il sito
 setup.driver.get("https://kairos.unifi.it/portalePlanning/BIBL/login.php")
