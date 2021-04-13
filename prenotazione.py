@@ -80,7 +80,7 @@ def ciclo_prenotazione(fascia_oraria):
 
             except:
                 # se il giorno non è disponibile
-                print("Giorno non disponibile")
+                print("")
 
         # torna alla pagina principale
         setup.driver.find_element_by_class_name("hamburger").click()
