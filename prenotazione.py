@@ -55,7 +55,7 @@ def ciclo_prenotazione(fascia_oraria):
 
             # apre soltanto i giorni che sono prenotabili ed esegue la prenotazione
             try:
-                WebDriverWait(setup.driver, 0.2).until(
+                WebDriverWait(setup.driver, 2).until(
                     EC.presence_of_element_located(
                         (By.CSS_SELECTOR, "[title=\"Clicca per prenotare!\"]"))
                 )
@@ -80,7 +80,7 @@ def ciclo_prenotazione(fascia_oraria):
 
             except:
                 # se il giorno non è disponibile
-                print("")
+                pass
 
         # torna alla pagina principale
         setup.driver.find_element_by_class_name("hamburger").click()
