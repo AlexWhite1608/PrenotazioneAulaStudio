@@ -21,6 +21,10 @@ def ciclo_prenotazione(fascia_oraria):
     fascia = Select(setup.driver.find_element_by_xpath('//*[@id="servizio"]'))
     fascia.select_by_visible_text("Prenotazione Posto Aula di Studio " + fascia_oraria)
 
+    # seleziona l'edificio
+    edificio = Select(setup.driver.find_element_by_xpath('//*[@id="area"]'))
+    edificio.select_by_visible_text("Sala Studio Edificio D14 Campus Novoli")
+
     # apre il calendario
     time.sleep(0.5)
     setup.driver.find_element_by_id("data_inizio-form").click()
