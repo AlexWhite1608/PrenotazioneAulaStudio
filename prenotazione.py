@@ -99,8 +99,27 @@ def info_prenotazione():
         if 'Sportello: ' in informazione.text:
             print("\n\n" + informazione.text + "\n")
 
-'''
+
 def gestione_prenotazioni():
-'''
+    # apre la pagina contenente tutte le prenotazioni
+    setup.driver.find_element_by_id("mybookings").click()
 
+    # aspetta il caricamento della pagina
+    try:
+        WebDriverWait(setup.driver, 15).until(
+            EC.presence_of_element_located(
+                (By.CLASS_NAME, "col-xs-12"))
+        )
+    except:
+        print("Pagina non caricata")
 
+    counter = 0
+    setup.driver.find_element_by_class_name("form-group col-xs-12 form-group-bordered")
+    setup.driver.find_element_by_class_name("table table-custom")
+    prenotazioni = setup.driver.find_elements_by_class_name("table-row")
+
+    while counter < 15:
+        for prenotazione in prenotazioni:
+            prenotazione.find_element_by_class_name("visible-xs")
+            print("\n" + prenotazione.text() + "\n")
+        counter += 1

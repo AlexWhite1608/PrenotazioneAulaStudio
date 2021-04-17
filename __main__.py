@@ -15,9 +15,18 @@ setup.driver.get("https://kairos.unifi.it/portalePlanning/BIBL/login.php")
 # fa il login con matricola e password
 login.login()
 
+try:
+    pagina_principale = WebDriverWait(setup.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "titolo-pagina"))
+    )
+
+    prenotazione.gestione_prenotazioni()
+
+except:
+    print("Impossibile aprire pagina prenotazioni!")
 # TODO: chiedere all'utente che azione svolgere (prenotazione/cancellazione/gestione prenotazioni)
 
-
+'''
 # aspetta che la pagina principale venga caricata
 try:
     pagina_principale = WebDriverWait(setup.driver, 5).until(
@@ -44,3 +53,5 @@ except:
 # finite le prenotazioni, chiude tutto
 print("Tutte le prenotazioni sono state eseguite!")
 setup.driver.quit()
+
+'''
