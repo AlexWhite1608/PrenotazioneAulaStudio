@@ -31,7 +31,7 @@ def ciclo_prenotazione(fascia_oraria):
 
     # ciclo per selezionare i giorni dal calendario
     count = 0
-    while count <= 11:  # FIXME: capisci come ottimizzare il ciclo
+    while count <= 11:
         count += 1
         lista_giorni = setup.driver.find_element_by_xpath('//*[@id="data_inizio-container"]/div[3]/div[1]/table/tbody')
         giorni = lista_giorni.find_elements_by_tag_name("td")
@@ -66,7 +66,6 @@ def ciclo_prenotazione(fascia_oraria):
 
                 setup.driver.find_element_by_css_selector("[title=\"Clicca per prenotare!\"]").click()
 
-                # TODO: le informazioni della prenotazione devono essere stampate in un file(?)
                 # stampa informazioni prenotazione
                 info_prenotazione()
 
