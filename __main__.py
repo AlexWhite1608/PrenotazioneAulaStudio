@@ -5,11 +5,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# inserire matricola e password
+setup.matricola = input("Inserire la matricola: ")
+setup.password = input("Inserire la password: ")
+
 # apre il sito
 setup.driver.get("https://kairos.unifi.it/portalePlanning/BIBL/login.php")
 
 # fa il login con matricola e password
 login.login()
+
+# TODO: chiedere all'utente che azione svolgere (prenotazione/cancellazione/gestione prenotazioni)
+
 
 # aspetta che la pagina principale venga caricata
 try:

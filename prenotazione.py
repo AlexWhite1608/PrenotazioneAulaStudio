@@ -98,3 +98,9 @@ def info_prenotazione():
     for informazione in informazioni:
         if 'Sportello: ' in informazione.text:
             print("\n\n" + informazione.text + "\n")
+
+'''
+def gestione_prenotazioni():
+'''
+
+
