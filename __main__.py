@@ -4,6 +4,7 @@ import prenotazione
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
 
 # inserire matricola e password
 setup.matricola = input("Matricola: ")
@@ -22,7 +23,7 @@ try:
 
     prenotazione.gestione_prenotazioni()
 
-except:
+except NoSuchElementException:
     print("Impossibile aprire pagina prenotazioni!")
 
 # TODO: chiedere all'utente che azione svolgere (prenotazione/cancellazione/gestione prenotazioni)
@@ -37,7 +38,7 @@ try:
     # esegue prenotazione per la mattina
     prenotazione.nuova_prenotazione("Mattina")
 
-except:
+except NoSuchElementException:
     print("Finito Mattina")
 
 try:
@@ -48,7 +49,7 @@ try:
     # esegue prenotazione per il pomeriggio
     prenotazione.nuova_prenotazione("Pomeriggio")
 
-except:
+except NoSuchElementException:
     print("Finito pomeriggio")
 
 # finite le prenotazioni, chiude tutto

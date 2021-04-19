@@ -1,8 +1,8 @@
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
-
 import setup
 import time
 
@@ -110,15 +110,14 @@ def gestione_prenotazioni():
             EC.presence_of_element_located(
                 (By.CLASS_NAME, "col-xs-12"))
         )
-    except:
+    except NoSuchElementException:
         print("Pagina non caricata")
 
     counter = 0
     tabella = setup.driver.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table')
-    prenotazioni_body = tabella.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table/tbody')
-    date_prenotate = prenotazioni_body.find_elements_by_tag_name('tr')
+    body = tabella.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table/tbody')
+    prenotazioni = body.find_elements_by_tag_name('tr')
 
-    while counter < 15:
-        for prenotazione in date_prenotate:
-            print(prenotazione.text)
-        counter += 1
+    for counter in range(15):
+        for prenotazione in prenotazioni:
+            print("\n" + prenotazione.text + "\n")
