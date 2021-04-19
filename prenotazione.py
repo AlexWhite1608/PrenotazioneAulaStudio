@@ -114,12 +114,11 @@ def gestione_prenotazioni():
         print("Pagina non caricata")
 
     counter = 0
-    setup.driver.find_element_by_class_name("form-group col-xs-12 form-group-bordered")
-    setup.driver.find_element_by_class_name("table table-custom")
-    prenotazioni = setup.driver.find_elements_by_class_name("table-row")
+    tabella = setup.driver.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table')
+    prenotazioni_body = tabella.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table/tbody')
+    date_prenotate = prenotazioni_body.find_elements_by_tag_name('tr')
 
     while counter < 15:
-        for prenotazione in prenotazioni:
-            prenotazione.find_element_by_class_name("visible-xs")
-            print("\n" + prenotazione.text() + "\n")
+        for prenotazione in date_prenotate:
+            print(prenotazione.text)
         counter += 1

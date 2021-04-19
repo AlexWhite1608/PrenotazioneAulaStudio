@@ -24,6 +24,7 @@ try:
 
 except:
     print("Impossibile aprire pagina prenotazioni!")
+
 # TODO: chiedere all'utente che azione svolgere (prenotazione/cancellazione/gestione prenotazioni)
 
 '''
