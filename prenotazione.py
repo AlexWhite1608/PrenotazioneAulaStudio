@@ -118,6 +118,7 @@ def gestione_prenotazioni():
     body = tabella.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table/tbody')
     prenotazioni = body.find_elements_by_tag_name('tr')
 
-    for counter in range(15):
-        for prenotazione in prenotazioni:
+    for prenotazione in prenotazioni:
+        if counter < 16:
             print("\n" + prenotazione.text + "\n")
+        counter += 1
