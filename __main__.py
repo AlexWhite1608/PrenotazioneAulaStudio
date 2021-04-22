@@ -16,42 +16,42 @@ setup.driver.get("https://kairos.unifi.it/portalePlanning/BIBL/login.php")
 # fa il login con matricola e password
 login.login()
 
-try:
-    pagina_principale = WebDriverWait(setup.driver, 10).until(
-        EC.presence_of_element_located((By.ID, "titolo-pagina"))
-    )
-
-    prenotazione.gestione_prenotazioni()
-
-except NoSuchElementException:
-    print("Impossibile aprire pagina prenotazioni!")
+# try:
+#     pagina_principale = WebDriverWait(setup.driver, 10).until(
+#         EC.presence_of_element_located((By.ID, "titolo-pagina"))
+#     )
+#
+#     prenotazione.gestione_prenotazioni()
+#
+# except NoSuchElementException:
+#     print("Impossibile aprire pagina prenotazioni!")
 
 # TODO: chiedere all'utente che azione svolgere (prenotazione/cancellazione/gestione prenotazioni)
 
 # aspetta che la pagina principale venga caricata
-# try:
-#     pagina_principale = WebDriverWait(setup.driver, 5).until(
-#         EC.presence_of_element_located((By.ID, "titolo-pagina"))
-#     )
-#
-#     # esegue prenotazione per la mattina
-#     prenotazione.nuova_prenotazione("Mattina")
-#
-# except NoSuchElementException:
-#     print("Finito Mattina")
-#
-# try:
-#     pagina_principale = WebDriverWait(setup.driver, 5).until(
-#         EC.presence_of_element_located((By.ID, "titolo-pagina"))
-#     )
-#
-#     # esegue prenotazione per il pomeriggio
-#     prenotazione.nuova_prenotazione("Pomeriggio")
-#
-# except NoSuchElementException:
-#     print("Finito pomeriggio")
-#
-# # finite le prenotazioni, chiude tutto
-# print("Tutte le prenotazioni sono state eseguite!")
-# setup.driver.quit()
+try:
+    pagina_principale = WebDriverWait(setup.driver, 5).until(
+        EC.presence_of_element_located((By.ID, "titolo-pagina"))
+    )
+
+    # esegue prenotazione per la mattina
+    prenotazione.nuova_prenotazione("Mattina")
+
+except NoSuchElementException:
+    print("Finito Mattina")
+
+try:
+    pagina_principale = WebDriverWait(setup.driver, 5).until(
+        EC.presence_of_element_located((By.ID, "titolo-pagina"))
+    )
+
+    # esegue prenotazione per il pomeriggio
+    prenotazione.nuova_prenotazione("Pomeriggio")
+
+except NoSuchElementException:
+    print("Finito pomeriggio")
+
+# finite le prenotazioni, chiude tutto
+print("Tutte le prenotazioni sono state eseguite!")
+setup.driver.quit()
 
