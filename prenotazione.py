@@ -1,8 +1,8 @@
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
-
 import setup
 import time
 
@@ -46,9 +46,8 @@ def ciclo_prenotazione(fascia_oraria):
 
         # apre anche i giorni successivi
         setup.driver.find_element_by_id("load_next").click()
-        time.sleep(0.7)
+        time.sleep(2)
         setup.driver.find_element_by_id("load_next").click()
-        time.sleep(0.7)
 
         # seleziona i giorni prenotabili dalla lista
         giorni_prenotabili = setup.driver.find_elements_by_css_selector(
@@ -64,6 +63,7 @@ def ciclo_prenotazione(fascia_oraria):
                         (By.CSS_SELECTOR, "[title=\"Clicca per prenotare!\"]"))
                 )
 
+                time.sleep(1)
                 setup.driver.find_element_by_css_selector("[title=\"Clicca per prenotare!\"]").click()
 
                 # stampa informazioni prenotazione
@@ -98,3 +98,28 @@ def info_prenotazione():
     for informazione in informazioni:
         if 'Sportello: ' in informazione.text:
             print("\n\n" + informazione.text + "\n")
+
+
+def gestione_prenotazioni():
+    # apre la pagina contenente tutte le prenotazioni
+    setup.driver.find_element_by_id("mybookings").click()
+
+    # aspetta il caricamento della pagina
+    try:
+        WebDriverWait(setup.driver, 15).until(
+            EC.presence_of_element_located(
+                (By.CLASS_NAME, "col-xs-12"))
+        )
+    except NoSuchElementException:
+        print("Pagina non caricata")
+
+    counter = 0
+    tabella = setup.driver.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table')
+    body = tabella.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table/tbody')
+    prenotazioni = body.find_elements_by_tag_name('tr')
+
+    for prenotazione in prenotazioni:
+        if counter < 16:
+            print("\n" + prenotazione.text + "\n")
+
+        counter += 1
