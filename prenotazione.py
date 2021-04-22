@@ -46,9 +46,8 @@ def ciclo_prenotazione(fascia_oraria):
 
         # apre anche i giorni successivi
         setup.driver.find_element_by_id("load_next").click()
-        time.sleep(0.7)
+        time.sleep(2)
         setup.driver.find_element_by_id("load_next").click()
-        time.sleep(0.7)
 
         # seleziona i giorni prenotabili dalla lista
         giorni_prenotabili = setup.driver.find_elements_by_css_selector(
@@ -64,6 +63,7 @@ def ciclo_prenotazione(fascia_oraria):
                         (By.CSS_SELECTOR, "[title=\"Clicca per prenotare!\"]"))
                 )
 
+                time.sleep(1)
                 setup.driver.find_element_by_css_selector("[title=\"Clicca per prenotare!\"]").click()
 
                 # stampa informazioni prenotazione
@@ -121,4 +121,5 @@ def gestione_prenotazioni():
     for prenotazione in prenotazioni:
         if counter < 16:
             print("\n" + prenotazione.text + "\n")
+
         counter += 1

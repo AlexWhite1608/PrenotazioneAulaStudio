@@ -28,7 +28,7 @@ except NoSuchElementException:
 
 # TODO: chiedere all'utente che azione svolgere (prenotazione/cancellazione/gestione prenotazioni)
 
-# # aspetta che la pagina principale venga caricata
+# aspetta che la pagina principale venga caricata
 # try:
 #     pagina_principale = WebDriverWait(setup.driver, 5).until(
 #         EC.presence_of_element_located((By.ID, "titolo-pagina"))
