@@ -14,6 +14,7 @@ setup.password = input("Password: ")
 setup.driver.get("https://kairos.unifi.it/portalePlanning/BIBL/login.php")
 
 # fa il login con matricola e password
+# TODO: controllo sulle credenziali, se errate serve errore
 login.login()
 
 mode = int(input("\nNuova prenotazione -> 1 \nVisualizza prenotazioni -> 2\n"))

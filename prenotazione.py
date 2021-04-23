@@ -120,6 +120,6 @@ def gestione_prenotazioni():
 
     for prenotazione in prenotazioni:
         if counter < 16:
-            print("\n" + prenotazione.text + "\n")
+            print("\n" + "-> " + prenotazione.text[34:-21] + "\n")  # FIXME: togli magic numbers
 
         counter += 1
