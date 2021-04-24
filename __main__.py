@@ -5,8 +5,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+import os
 
 # inserire matricola e password
+os.system('cls')
 setup.matricola = input("Matricola: ")
 setup.password = input("Password: ")
 
@@ -17,7 +19,10 @@ setup.driver.get("https://kairos.unifi.it/portalePlanning/BIBL/login.php")
 # TODO: controllo sulle credenziali, se errate serve errore
 login.login()
 
-mode = int(input("\nNuova prenotazione -> 1 \nVisualizza prenotazioni -> 2\n"))
+os.system('cls')
+print("Scegliere il servizio da eseguire: ")
+mode = int(input("\nNuova prenotazione -> 1 \nVisualizza prenotazioni -> 2: "))
+print("Caricamento...")
 
 if mode == 1:  # nuova prenotazione
     # aspetta che la pagina principale venga caricata

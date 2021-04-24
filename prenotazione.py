@@ -3,6 +3,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
+from progress.bar import Bar
+import os
 import setup
 import time
 
@@ -105,6 +107,7 @@ def gestione_prenotazioni():
     setup.driver.find_element_by_id("mybookings").click()
 
     # aspetta il caricamento della pagina
+    # TODO: implementa progressbar per il caricamento
     try:
         WebDriverWait(setup.driver, 15).until(
             EC.presence_of_element_located(
@@ -118,8 +121,9 @@ def gestione_prenotazioni():
     body = tabella.find_element_by_xpath('//*[@id="content"]/div/div/div[1]/div[2]/table/tbody')
     prenotazioni = body.find_elements_by_tag_name('tr')
 
+    os.system('cls')
     for prenotazione in prenotazioni:
         if counter < 16:
-            print("\n" + "-> " + prenotazione.text[34:-21] + "\n")  # FIXME: togli magic numbers
+            print("\n" + prenotazione.text[34:-21] + "\n")  # FIXME: togli magic numbers
 
         counter += 1
