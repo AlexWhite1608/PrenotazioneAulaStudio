@@ -1,3 +1,5 @@
+import time
+
 import login
 import setup
 import prenotazione
@@ -36,6 +38,8 @@ if mode == 1:  # nuova prenotazione
 
     except NoSuchElementException:
         print("Finito Mattina")
+
+    time.sleep(2)
 
     try:
         pagina_principale = WebDriverWait(setup.driver, 5).until(

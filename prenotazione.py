@@ -79,7 +79,7 @@ def ciclo_prenotazione(fascia_oraria):
                 setup.driver.find_element_by_class_name("nav")
                 time.sleep(0.5)
                 setup.driver.find_element_by_xpath('//*[@id="menu"]/div/div[1]/ul/li[2]/a').click()
-                time.sleep(1)
+                time.sleep(3)
 
                 # riesegue tutto il ciclo andando a creare una nuova prenotazione fino a quando si esauriscono i giorni
                 ciclo_prenotazione(fascia_oraria)
@@ -90,9 +90,10 @@ def ciclo_prenotazione(fascia_oraria):
 
         # torna alla pagina principale
         setup.driver.find_element_by_class_name("hamburger").click()
-        time.sleep(0.5)
+        time.sleep(1.5)
         setup.driver.find_element_by_class_name("nav")
         setup.driver.find_element_by_xpath('//*[@id="menu"]/div/div[1]/ul/li[1]/a').click()
+        time.sleep(2)
 
 
 def info_prenotazione():
